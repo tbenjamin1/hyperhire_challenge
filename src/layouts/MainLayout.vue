@@ -3,8 +3,8 @@
     <!-- header -->
     <q-header unelevated class="bg-white text-black q-py-xs" height-hint="58">
       <q-toolbar>
-        <q-btn flat dense round @click="toggleLeftDrawer" aria-label="Menu" icon="menu" />
-
+        <q-btn flat dense round @click="toggleLeftDrawer" v-if="$q.screen.gt.xs" aria-label="Menu" icon="menu" />
+        <q-btn v-else flat dense round @click="toggleDrawer" aria-label="Menu" icon="menu" />
         <q-btn flat no-caps no-wrap class="logo">
           <q-icon :name="fabYoutube" color="red" size="28px" />
           <q-toolbar-title shrink class="text-weight-bold">
@@ -28,31 +28,31 @@
         </div>
         <q-space />
         <div class="q-gutter-sm row items-center no-wrap" v-if="$q.screen.gt.xs">
-          
+
           <q-btn round flat icon="more_vert">
-                <q-menu auto-close :offset="[110, 0]">
-                  <q-list style="min-width: 150px">
-                    <q-item clickable>
-                      <q-item-section>Contact data</q-item-section>
-                    </q-item>
-                    <q-item clickable>
-                      <q-item-section>Block</q-item-section>
-                    </q-item>
-                    <q-item clickable>
-                      <q-item-section>Select messages</q-item-section>
-                    </q-item>
-                    <q-item clickable>
-                      <q-item-section>Silence</q-item-section>
-                    </q-item>
-                    <q-item clickable>
-                      <q-item-section>Clear messages</q-item-section>
-                    </q-item>
-                    <q-item clickable>
-                      <q-item-section>Erase messages</q-item-section>
-                    </q-item>
-                  </q-list>
-                </q-menu>
-              </q-btn>
+            <q-menu auto-close :offset="[110, 0]">
+              <q-list style="min-width: 150px">
+                <q-item clickable>
+                  <q-item-section>Contact data</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Block</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Select messages</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Silence</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Clear messages</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Erase messages</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
           <q-btn outline rounded color="primary" class="q-py-sm">
             <q-btn unelevated round color="primary" size="8px" text-color="white" icon="person" class="q-p" />
             <div class="profile">profile</div>
@@ -62,38 +62,38 @@
         </div>
         <div v-else>
           <q-btn round flat icon="more_vert">
-              <q-menu auto-close :offset="[110, 0]">
-                <q-list style="min-width: 150px">
-                  <q-item clickable>
-                    <q-item-section>Contact data</q-item-section>
-                  </q-item>
-                  <q-item clickable>
-                    <q-item-section>Block</q-item-section>
-                  </q-item>
-                  <q-item clickable>
-                    <q-item-section>Select messages</q-item-section>
-                  </q-item>
-                  <q-item clickable>
-                    <q-item-section>Silence</q-item-section>
-                  </q-item>
-                  <q-item clickable>
-                    <q-item-section>Clear messages</q-item-section>
-                  </q-item>
-                  <q-item clickable>
-                    <q-item-section>Erase messages</q-item-section>
-                  </q-item>
-                </q-list>
-              </q-menu>
-            </q-btn>
+            <q-menu auto-close :offset="[110, 0]">
+              <q-list style="min-width: 150px">
+                <q-item clickable>
+                  <q-item-section>Contact data</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Block</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Select messages</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Silence</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Clear messages</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Erase messages</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
         </div>
 
       </q-toolbar>
     </q-header>
     <!-- menu  drawer-->
-    <q-drawer v-if="leftDrawerOpen" v-model="leftDrawerOpen" class="bg-white" :width="200">
+    <q-drawer v-model="leftDrawerOpen" show-if-above class="bg-white" :width="defautDrawerOpen ? 100 : 200">
       <q-scroll-area class="fit">
         <q-list padding>
-          <q-item class="q_item" v-for="link in links1" :key="link.text" v-ripple clickable>
+          <q-item :class="defautDrawerOpen ? 'q_item' : ''" v-for="link in links1" :key="link.text" v-ripple clickable>
             <q-item-section avatar>
               <q-icon color="black" :name="link.icon" />
             </q-item-section>
@@ -101,7 +101,7 @@
               <q-item-label color="black">{{ link.text }}</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item class="q_item" v-for="link in links2" :key="link.text" v-ripple clickable>
+          <q-item :class="defautDrawerOpen ? 'q_item' : ''" v-for="link in links2" :key="link.text" v-ripple clickable>
             <q-item-section avatar>
               <q-icon color="black" :name="link.icon" />
             </q-item-section>
@@ -137,16 +137,18 @@ export default {
 
   setup() {
     // Define ref variables for state
-    const leftDrawerOpen = ref(true) 
-    const defautDrawerOpen = ref(false) 
+    const leftDrawerOpen = ref(false)
+    const defautDrawerOpen = ref(false)
     const search = ref('')
 
 
     function toggleLeftDrawer() {
-      // defautDrawerOpen.value = !defautDrawerOpen.value
+      defautDrawerOpen.value = !defautDrawerOpen.value
+     
+    }
+    function toggleDrawer() {
       leftDrawerOpen.value = !leftDrawerOpen.value
     }
-
     return {
       fabYoutube,
 
@@ -156,6 +158,7 @@ export default {
       search,
 
       toggleLeftDrawer,
+      toggleDrawer,
 
       links1: [
         { icon: 'home', text: 'Home' },
@@ -189,7 +192,7 @@ export default {
         { text: 'Advertise' },
         { text: 'Developers' }
       ],
-      
+
     }
   }
 }
@@ -239,21 +242,25 @@ export default {
   border-radius: 10px;
   cursor: pointer;
 }
-.q-btn__content{
-display: flex;
-flex-wrap: unset;
+
+.q-btn__content {
+  display: flex;
+  flex-wrap: unset;
 }
+
 @media (max-width: 600px) {
 
   .q-btn .q-icon,
   .q-btn .q-spinner {
     font-size: 16px;
   }
-.q-btn--round {
+
+  .q-btn--round {
     border-radius: 50%;
     padding: 0;
     min-width: unset;
-}
+  }
+
   .micro-icon {
     margin: 0px 0px;
   }
