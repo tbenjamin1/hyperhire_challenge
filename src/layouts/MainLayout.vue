@@ -49,11 +49,11 @@
 
       </q-toolbar>
     </q-header>
-<!-- menu  drawer-->
+    <!-- menu  drawer-->
     <q-drawer v-if="leftDrawerOpen" v-model="leftDrawerOpen" class="bg-white" :width="200">
       <q-scroll-area class="fit">
         <q-list padding>
-          <q-item v-for="link in links1" :key="link.text" v-ripple clickable>
+          <q-item class="q_item" v-for="link in links1" :key="link.text" v-ripple clickable>
             <q-item-section avatar>
               <q-icon color="black" :name="link.icon" />
             </q-item-section>
@@ -61,7 +61,7 @@
               <q-item-label color="black">{{ link.text }}</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item v-for="link in links2" :key="link.text" v-ripple clickable>
+          <q-item class="q_item" v-for="link in links2" :key="link.text" v-ripple clickable>
             <q-item-section avatar>
               <q-icon color="black" :name="link.icon" />
             </q-item-section>
@@ -97,9 +97,10 @@ export default {
 
   setup() {
     // Define ref variables for state
-    const leftDrawerOpen = ref(true) // Initially set to false
-    const defautDrawerOpen = ref(false) // Initially set to false
+    const leftDrawerOpen = ref(true) 
+    const defautDrawerOpen = ref(false) 
     const search = ref('')
+
 
     function toggleLeftDrawer() {
       // defautDrawerOpen.value = !defautDrawerOpen.value
@@ -148,12 +149,7 @@ export default {
         { text: 'Advertise' },
         { text: 'Developers' }
       ],
-      buttons2: [
-        { text: 'Terms' },
-        { text: 'Privacy' },
-        { text: 'Policy & Safety' },
-        { text: 'Test new features' }
-      ]
+      
     }
   }
 }
