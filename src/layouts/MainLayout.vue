@@ -28,10 +28,31 @@
         </div>
         <q-space />
         <div class="q-gutter-sm row items-center no-wrap" v-if="$q.screen.gt.xs">
-          <q-btn unelevated round color="bg-white" size="8px" text-color="white">
-            <div class="cutom-dots"> ⫶
-            </div>
-          </q-btn>
+          
+          <q-btn round flat icon="more_vert">
+                <q-menu auto-close :offset="[110, 0]">
+                  <q-list style="min-width: 150px">
+                    <q-item clickable>
+                      <q-item-section>Contact data</q-item-section>
+                    </q-item>
+                    <q-item clickable>
+                      <q-item-section>Block</q-item-section>
+                    </q-item>
+                    <q-item clickable>
+                      <q-item-section>Select messages</q-item-section>
+                    </q-item>
+                    <q-item clickable>
+                      <q-item-section>Silence</q-item-section>
+                    </q-item>
+                    <q-item clickable>
+                      <q-item-section>Clear messages</q-item-section>
+                    </q-item>
+                    <q-item clickable>
+                      <q-item-section>Erase messages</q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-menu>
+              </q-btn>
           <q-btn outline rounded color="primary" class="q-py-sm">
             <q-btn unelevated round color="primary" size="8px" text-color="white" icon="person" class="q-p" />
             <div class="profile">profile</div>
@@ -40,11 +61,30 @@
 
         </div>
         <div v-else>
-          <q-btn unelevated round color="bg-white" size="8px" text-color="white">
-            <div class="cutom-dots"> ⫶
-            </div>
-
-          </q-btn>
+          <q-btn round flat icon="more_vert">
+              <q-menu auto-close :offset="[110, 0]">
+                <q-list style="min-width: 150px">
+                  <q-item clickable>
+                    <q-item-section>Contact data</q-item-section>
+                  </q-item>
+                  <q-item clickable>
+                    <q-item-section>Block</q-item-section>
+                  </q-item>
+                  <q-item clickable>
+                    <q-item-section>Select messages</q-item-section>
+                  </q-item>
+                  <q-item clickable>
+                    <q-item-section>Silence</q-item-section>
+                  </q-item>
+                  <q-item clickable>
+                    <q-item-section>Clear messages</q-item-section>
+                  </q-item>
+                  <q-item clickable>
+                    <q-item-section>Erase messages</q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
         </div>
 
       </q-toolbar>
@@ -199,14 +239,21 @@ export default {
   border-radius: 10px;
   cursor: pointer;
 }
-
+.q-btn__content{
+display: flex;
+flex-wrap: unset;
+}
 @media (max-width: 600px) {
 
   .q-btn .q-icon,
   .q-btn .q-spinner {
     font-size: 16px;
   }
-
+.q-btn--round {
+    border-radius: 50%;
+    padding: 0;
+    min-width: unset;
+}
   .micro-icon {
     margin: 0px 0px;
   }
