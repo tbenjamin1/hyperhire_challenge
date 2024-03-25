@@ -1,6 +1,5 @@
 <template>
   <div class="q-gutter-md">
-    
     <div class="q-pa-sm row justify-center ">
       <!-- Duplicate the first image link 5 times -->
       <div class=" my-main-card q-col-md-3" v-for="index in 5" :key="'mountains-' + index">
