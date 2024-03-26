@@ -144,7 +144,7 @@ export default {
 
     function toggleLeftDrawer() {
       defautDrawerOpen.value = !defautDrawerOpen.value
-     
+
     }
     function toggleDrawer() {
       leftDrawerOpen.value = !leftDrawerOpen.value
@@ -227,9 +227,11 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 .q-item__label {
-font-size: 10px;
+  font-size: 10px;
 }
+
 .cutom-dots {
   font-weight: bolder;
   color: black;
@@ -244,9 +246,18 @@ font-size: 10px;
   cursor: pointer;
 }
 
+.search-btn {
+  height: 95%;
+  border-left:1px solid rgba(167, 164, 164, 0.933);
+}
+
 .q-btn__content {
   display: flex;
   flex-wrap: unset;
+}
+
+.q-toolbar__title {
+  padding: 0px;
 }
 
 @media (max-width: 600px) {
@@ -285,7 +296,7 @@ font-size: 10px;
 
   .q-toolbar__title {
     font-size: 12px;
-    padding: 0 2px;
+    padding: 0px 2px 0px 0px;
 
   }
 }</style>
