@@ -23,9 +23,7 @@
           </q-input>
 
         </div>
-       
-          <q-btn round flat icon="mic" />
-     
+        <q-btn round flat icon="mic" class="q-ma-sm" />
         <q-space />
         <div class="q-gutter-sm row items-center no-wrap" v-if="$q.screen.gt.xs">
 
@@ -204,11 +202,13 @@ export default {
   border-radius: 0;
   padding: 0px 1px 0px 10px;
 }
+
 .q-field--focused .q-field__native,
 .q-field--highlighted .q-field__native {
   outline: none !important;
   box-shadow: none;
 }
+
 .YL__toolbar-input-container {
   min-width: 100px;
   width: 55%
@@ -244,7 +244,7 @@ export default {
 
 .search-btn {
   height: 95%;
-  border-left:1px solid rgba(167, 164, 164, 0.933);
+  border-left: 1px solid rgba(167, 164, 164, 0.933);
 }
 
 .q-btn__content {
@@ -269,7 +269,7 @@ export default {
     min-width: unset;
   }
 
- 
+
 
   .q-btn {
     padding: 0px;
