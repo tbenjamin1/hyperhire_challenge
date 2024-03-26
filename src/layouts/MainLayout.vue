@@ -23,9 +23,9 @@
           </q-input>
 
         </div>
-        <div class="micro-icon">
-          <q-btn unelevated color="white" text-color="black" icon="micro"></q-btn>
-        </div>
+       
+          <q-btn round flat icon="mic" />
+     
         <q-space />
         <div class="q-gutter-sm row items-center no-wrap" v-if="$q.screen.gt.xs">
 
@@ -202,22 +202,18 @@ export default {
 /* Assuming you want to reset border-radius and padding for all q-input components */
 .q-field--outlined .q-field__control {
   border-radius: 0;
-  /* Reset border-radius */
   padding: 0px 1px 0px 10px;
-  /* Reset padding */
 }
-
+.q-field--focused .q-field__native,
+.q-field--highlighted .q-field__native {
+  outline: none !important;
+  box-shadow: none;
+}
 .YL__toolbar-input-container {
   min-width: 100px;
   width: 55%
 }
 
-.micro-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px 30px;
-}
 
 .profile {
   padding: 0px 0px 0px 10px;
@@ -273,9 +269,7 @@ export default {
     min-width: unset;
   }
 
-  .micro-icon {
-    margin: 0px 0px;
-  }
+ 
 
   .q-btn {
     padding: 0px;
