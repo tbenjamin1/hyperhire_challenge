@@ -138,7 +138,7 @@ export default {
   setup() {
     // Define ref variables for state
     const leftDrawerOpen = ref(false)
-    const defautDrawerOpen = ref(false)
+    const defautDrawerOpen = ref(true)
     const search = ref('')
 
 
@@ -226,9 +226,10 @@ export default {
 .q_item {
   display: flex;
   flex-direction: column;
-
 }
-
+.q-item__label {
+font-size: 10px;
+}
 .cutom-dots {
   font-weight: bolder;
   color: black;
