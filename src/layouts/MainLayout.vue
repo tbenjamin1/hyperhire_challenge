@@ -23,7 +23,7 @@
           </q-input>
 
         </div>
-        <q-btn round flat icon="mic" />
+        <q-btn round flat icon="mic" class="q-ma-sm" />
         <q-space />
         <div class="q-gutter-sm row items-center no-wrap" v-if="$q.screen.gt.xs">
 
